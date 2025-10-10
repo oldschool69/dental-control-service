@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentalControl.API", "DentalControl.API\DentalControl.API.csproj", "{1832C123-2093-44BF-B5AD-34E460C0E1E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7A1FD389-63F1-44F0-8D3E-ACCE402B1EA8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{E41E8CDE-EEA3-4C6D-A5AA-46A9C6EA3B78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "src\Modules\Authentication\Authentication.csproj", "{FBC7A894-8FD5-4814-96C6-2F19C6FE1921}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManagement", "src\Modules\UserManagement\UserManagement.csproj", "{34B0DAC4-DC08-43D0-8EC8-182D6757DE92}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1832C123-2093-44BF-B5AD-34E460C0E1E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1832C123-2093-44BF-B5AD-34E460C0E1E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1832C123-2093-44BF-B5AD-34E460C0E1E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1832C123-2093-44BF-B5AD-34E460C0E1E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBC7A894-8FD5-4814-96C6-2F19C6FE1921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBC7A894-8FD5-4814-96C6-2F19C6FE1921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBC7A894-8FD5-4814-96C6-2F19C6FE1921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBC7A894-8FD5-4814-96C6-2F19C6FE1921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34B0DAC4-DC08-43D0-8EC8-182D6757DE92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B0DAC4-DC08-43D0-8EC8-182D6757DE92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B0DAC4-DC08-43D0-8EC8-182D6757DE92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B0DAC4-DC08-43D0-8EC8-182D6757DE92}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E41E8CDE-EEA3-4C6D-A5AA-46A9C6EA3B78} = {7A1FD389-63F1-44F0-8D3E-ACCE402B1EA8}
+		{FBC7A894-8FD5-4814-96C6-2F19C6FE1921} = {E41E8CDE-EEA3-4C6D-A5AA-46A9C6EA3B78}
+		{34B0DAC4-DC08-43D0-8EC8-182D6757DE92} = {E41E8CDE-EEA3-4C6D-A5AA-46A9C6EA3B78}
+	EndGlobalSection
+EndGlobal
