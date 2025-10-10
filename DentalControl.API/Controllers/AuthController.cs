@@ -1,4 +1,3 @@
-using Authentication.DTOs;
 using Authentication.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
