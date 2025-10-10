@@ -4,5 +4,5 @@ namespace Authentication.Interfaces;
 
 public interface IAuthService
 {
-    LoginResponseDto? Authenticate(LoginRequestDto request);
+    Task<bool> LoginAsync(string email);
 }

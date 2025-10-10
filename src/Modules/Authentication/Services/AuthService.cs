@@ -1,17 +1,31 @@
-using Authentication.DTOs;
 using Authentication.Interfaces;
+using MediatR;
+using UserManagement.Queries;
 
-namespace Authentication.Services;
-
-public class AuthService : IAuthService
+namespace Authentication.Services
 {
-    public LoginResponseDto? Authenticate(LoginRequestDto request)
+    public class AuthService : IAuthService
     {
-        if (request.Username == "admin" && request.Password == "1234")
+        private readonly IMediator _mediator;
+
+        public AuthService(IMediator mediator)
         {
-            return new LoginResponseDto("mock-jwt-token", request.Username);
+            _mediator = mediator;
         }
 
-        return null;
+        public async Task<bool> LoginAsync(string email)
+        {
+            try
+            {
+                var user = await _mediator.Send(new GetUserByEmailQuery(email));
+                Console.WriteLine($"[Authentication] Login successful for {user.Email}");
+                return true;
+            }
+            catch (KeyNotFoundException ex)
+            {
+                Console.WriteLine($"[Authentication] Login failed: {ex.Message}");
+                return false;
+            }
+        }
     }
 }

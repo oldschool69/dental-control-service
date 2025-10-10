@@ -23,6 +23,13 @@ builder.Services.AddAuthenticationModule();
 builder.Services.AddUserManagementModule();
 
 
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssembly(typeof(AuthenticationModule).Assembly);
+    cfg.RegisterServicesFromAssembly(typeof(UserManagementModule).Assembly);
+});
+
+
 var app = builder.Build();
 
 // Enable Swagger UI

@@ -16,9 +16,11 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public IActionResult Login([FromBody] LoginRequestDto request)
+    public async Task<IActionResult> Login([FromQuery] string email)
     {
-        var result = _authService.Authenticate(request);
-        return result is null ? Unauthorized(new { Message = "Invalid credentials" }) : Ok(result);
+        var success = await _authService.LoginAsync(email);
+        return success
+            ? Ok(new { message = "Login successful!" })
+            : NotFound(new { message = "User not found." });
     }
 }
