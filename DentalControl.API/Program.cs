@@ -5,13 +5,15 @@ using UserManagement;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 // Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
-    {
+    {   
         Title = "Dental Control API",
         Version = "v1",
         Description = "API Dental Control System",
@@ -19,8 +21,8 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // Register modules
-builder.Services.AddAuthenticationModule();
-builder.Services.AddUserManagementModule();
+builder.Services.AddAuthenticationModule(connectionString);
+builder.Services.AddUserManagementModule(connectionString);
 
 
 builder.Services.AddMediatR(cfg =>
