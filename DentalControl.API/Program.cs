@@ -6,6 +6,10 @@ using UserManagement;
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+if (string.IsNullOrEmpty(connectionString))
+{
+    throw new InvalidOperationException("Connection string is not configured.");
+}
 
 // Add services to the container
 builder.Services.AddControllers();
