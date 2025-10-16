@@ -9,8 +9,8 @@ namespace UserManagement.Handlers
         // This could be replaced by a real database in the future
         private static readonly List<UserDto> MockUsers =
         [
-            new(1, "admin", "Administrator", "admin@example.com"),
-            new(2, "john.doe", "Standard User", "john.doe@example.com"),
+            new("1", "admin", "Administrator", "admin@example.com"),
+            new("2", "john.doe", "Standard User", "john.doe@example.com"),
         ];
 
         public Task<UserDto> Handle(GetUserByEmailQuery request, CancellationToken cancellationToken)

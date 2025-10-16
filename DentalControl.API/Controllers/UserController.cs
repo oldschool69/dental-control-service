@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using UserManagement.DTOs;
 using UserManagement.Interfaces;
 
 namespace DentalControl.API.Controllers;
@@ -15,12 +16,16 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetAllUsers() => Ok(_userService.GetAll());
-
-    [HttpGet("{id:int}")]
-    public IActionResult GetUserById(int id)
+    public async Task<IEnumerable<UserDto>> GetAllUsers()
     {
-        var user = _userService.GetById(id);
+        var users = await _userService.GetAll();
+        return users;
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetUserById(string id)
+    {
+        var user = await _userService.GetById(id);
         return user is null ? NotFound() : Ok(user);
     }
 }

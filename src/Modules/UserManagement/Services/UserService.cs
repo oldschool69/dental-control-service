@@ -1,18 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using UserManagement.Data;
 using UserManagement.DTOs;
 using UserManagement.Interfaces;
 
 namespace UserManagement.Services;
 
-public class UserService : IUserService
+public class UserService(UserDbContext context) : IUserService
 {
-    private readonly List<UserDto> _users = new()
+    public async Task<IEnumerable<UserDto>> GetAll()
     {
-        new UserDto(1, "admin", "Administrator", "admin@example.com"),
-        new UserDto(2, "john.doe", "Standard User", "john.doe@example.com")
-    };
+        var users = await context.Users.ToListAsync();
+        return users.Select(u => new UserDto(u.Id, u.UserName, u.Role, u.Email));
+    }
 
-    public IEnumerable<UserDto> GetAll() => _users;
-
-    public UserDto? GetById(int id) =>
-        _users.FirstOrDefault(u => u.Id == id);
+    public async Task<UserDto?> GetById(string id) =>
+        await context.Users
+            .Where(u => u.Id == id)
+            .Select(u => new UserDto(u.Id, u.UserName, u.Role, u.Email))
+            .FirstOrDefaultAsync();
 }
