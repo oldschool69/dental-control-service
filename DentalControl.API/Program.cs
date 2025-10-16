@@ -35,6 +35,8 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(typeof(UserManagementModule).Assembly);
 });
 
+builder.Services.AddAutoMapper(typeof(UserMappingProfile));
+
 
 var app = builder.Build();
 
